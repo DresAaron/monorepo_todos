@@ -23,6 +23,7 @@
   <style scoped>
   .todo-list {
     width: 100%;
+    overflow-y: auto; /* Ensure scrolling if the list is long */
   }
   
   .todo-item {

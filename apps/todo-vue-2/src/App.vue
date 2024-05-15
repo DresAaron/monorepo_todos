@@ -38,8 +38,16 @@ const updateTodo = (updatedTodo) => {
 </script>
 
 <style scoped>
+body, html, #app {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+}
+
 .container {
   display: flex;
+  width: 100vw;
   height: 100vh;
   background-color: #f0f0f0;
 }
