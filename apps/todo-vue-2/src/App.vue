@@ -37,7 +37,8 @@ const updateTodo = (updatedTodo) => {
 };
 </script>
 
-<style scoped>
+<style>
+/* Ensure both body and html take the full viewport size */
 body, html, #app {
   margin: 0;
   padding: 0;
@@ -47,25 +48,26 @@ body, html, #app {
 
 .container {
   display: flex;
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: 100%; /* Ensures the container takes full height */
   background-color: #f0f0f0;
 }
 
-.left-pane {
-  width: 30%;
-  background-color: #3a3a3a;
-  color: white;
+.left-pane, .right-pane {
   display: flex;
   flex-direction: column;
   padding: 20px;
   box-sizing: border-box;
 }
 
+.left-pane {
+  width: 30%;
+  background-color: #3a3a3a;
+  color: white;
+}
+
 .right-pane {
   width: 70%;
-  padding: 20px;
-  box-sizing: border-box;
   background-color: white;
 }
 
