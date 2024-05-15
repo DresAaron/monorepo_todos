@@ -6,7 +6,8 @@
         :class="['todo-item', { selected: todo.id === selectedTodo?.id }]"
         @click="selectTodo(todo)"
       >
-        {{ todo.title }}
+        <div class="todo-title">{{ todo.title }}</div>
+        <div class="todo-description">{{ todo.description }}</div>
       </div>
     </div>
   </template>
@@ -41,5 +42,14 @@
   
   .selected {
     background: #888;
+  }
+  
+  .todo-title {
+    font-weight: bold;
+  }
+  
+  .todo-description {
+    font-size: 0.9em;
+    color: #ccc;
   }
   </style>

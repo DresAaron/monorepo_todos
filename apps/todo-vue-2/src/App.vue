@@ -56,6 +56,7 @@ body, html, #app {
 
 .left-pane {
   width: 30%;
+  max-width: 400px; /* Set a max width for larger screens */
   background-color: #3a3a3a;
   color: white;
   display: flex;
@@ -65,7 +66,7 @@ body, html, #app {
 }
 
 .right-pane {
-  width: 70%;
+  flex: 1; /* Use flex to fill the remaining space */
   padding: 20px;
   box-sizing: border-box;
   background-color: white;
