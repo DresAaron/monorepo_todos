@@ -51,5 +51,10 @@ const selectTodo = (todo) => {
 .todo-description {
   font-size: 0.9em;
   color: #ccc;
+  display: -webkit-box;
+  -webkit-line-clamp: 2; /* Number of lines to show */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 </style>
