@@ -5,7 +5,13 @@
       <TodoList @selectTodo="selectTodo" :todos="todos" :selectedTodo="selectedTodo" />
     </div>
     <div class="right-pane">
-      <TodoEditor v-if="selectedTodo" :todo="selectedTodo" @updateTodo="updateTodo" />
+      <TodoEditor
+        v-if="selectedTodo"
+        :todo="selectedTodo" 
+        @updateTodo="updateTodo"
+        @closeEditor="deselectTodo"
+        @deleteTodo="deleteTodo"
+      />
       <div v-else class="placeholder">
         Click on a todo item to edit.
       </div>
@@ -29,13 +35,23 @@ const selectTodo = (todo) => {
   selectedTodo.value = todo;
 };
 
+const deselectTodo = () => {
+  selectedTodo.value = null;
+};
+
 const updateTodo = (updatedTodo) => {
   const index = todos.value.findIndex(todo => todo.id === updatedTodo.id);
   if (index !== -1) {
     todos.value[index] = updatedTodo;
   }
-  // Ensure the selectedTodo is also updated with the new info
-  selectedTodo.value = { ...updatedTodo };
+};
+
+const deleteTodo = () => {
+  const index = todos.value.findIndex(todo => todo.id === selectedTodo.value.id);
+  if (index !== -1) {
+    todos.value.splice(index, 1);
+    deselectTodo();
+  }
 };
 </script>
 
@@ -45,6 +61,7 @@ body, html, #app {
   padding: 0;
   width: 100%;
   height: 100%;
+  font-family: 'Roboto', sans-serif;
 }
 
 .container {
