@@ -6,14 +6,14 @@
     </div>
     <div class="right-pane">
       <TodoEditor
-        v-if="selectedTodo"
-        :todo="selectedTodo" 
+        v-if="selectedTodo || isAddingNew"
+        :todo="selectedTodo || newTodo"
         @updateTodo="updateTodo"
         @closeEditor="deselectTodo"
         @deleteTodo="deleteTodo"
       />
-      <div v-else class="placeholder">
-        Click on a todo item to edit.
+      <div v-else class="placeholder" @click="startAddingNewTodo">
+        Click on a todo item to edit or click here to add a new item.
       </div>
     </div>
   </div>
@@ -30,20 +30,36 @@ const todos = ref([
 ]);
 
 const selectedTodo = ref(null);
+const isAddingNew = ref(false);
+const newTodo = ref({ id: Date.now(), title: '', description: '', dueDate: '' });
 
 const selectTodo = (todo) => {
   selectedTodo.value = todo;
+  isAddingNew.value = false;
 };
 
 const deselectTodo = () => {
   selectedTodo.value = null;
+  isAddingNew.value = false;
+};
+
+const startAddingNewTodo = () => {
+  selectedTodo.value = null;
+  isAddingNew.value = true;
+  newTodo.value = { id: Date.now(), title: '', description: '', dueDate: '' };
 };
 
 const updateTodo = (updatedTodo) => {
-  const index = todos.value.findIndex(todo => todo.id === updatedTodo.id);
-  if (index !== -1) {
-    todos.value[index] = updatedTodo;
+  if (isAddingNew.value) {
+    todos.value.push(updatedTodo);
+    isAddingNew.value = false;
+  } else {
+    const index = todos.value.findIndex(todo => todo.id === updatedTodo.id);
+    if (index !== -1) {
+      todos.value[index] = updatedTodo;
+    }
   }
+  deselectTodo();
 };
 
 const deleteTodo = () => {
@@ -101,5 +117,11 @@ body, html, #app {
   height: 100%;
   color: #888;
   font-size: 18px;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+.placeholder:hover {
+  color: #555;
 }
 </style>

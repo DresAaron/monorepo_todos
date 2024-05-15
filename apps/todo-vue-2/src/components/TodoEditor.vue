@@ -1,9 +1,11 @@
 <template>
   <div class="todo-editor">
     <div class="editor-header">
-      <h2>Edit Todo</h2>
+      <h2>{{ isNew ? "Add Todo" : "Edit Todo" }}</h2>
       <button class="close-button" @click="closeEditor">Close</button>
-      <button class="delete-button" @click="deleteTodo">Delete</button>
+      <button class="delete-button" v-if="!isNew" @click="deleteTodo">
+        Delete
+      </button>
     </div>
     <form @submit.prevent="updateTodo">
       <div class="form-group">
@@ -29,8 +31,10 @@ import { reactive, watchEffect } from "vue";
 const props = defineProps({
   todo: Object,
 });
+
 const emit = defineEmits(["updateTodo", "closeEditor", "deleteTodo"]);
 
+const isNew = !props.todo.id;
 const editTodo = reactive({ ...props.todo });
 
 watchEffect(() => {
@@ -38,7 +42,7 @@ watchEffect(() => {
 });
 
 const updateTodo = () => {
-  emit("updateTodo", { ...editTodo });
+  emit("updateTodo", { ...editTodo, id: isNew ? Date.now() : editTodo.id });
 };
 
 const closeEditor = () => {
