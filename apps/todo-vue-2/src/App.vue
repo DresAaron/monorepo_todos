@@ -34,11 +34,12 @@ const updateTodo = (updatedTodo) => {
   if (index !== -1) {
     todos.value[index] = updatedTodo;
   }
+  // Ensure the selectedTodo is also updated with the new info
+  selectedTodo.value = { ...updatedTodo };
 };
 </script>
 
-<style>
-/* Ensure both body and html take the full viewport size */
+<style scoped>
 body, html, #app {
   margin: 0;
   padding: 0;
@@ -48,26 +49,25 @@ body, html, #app {
 
 .container {
   display: flex;
-  width: 100%;
-  height: 100%; /* Ensures the container takes full height */
+  width: 100vw;
+  height: 100vh;
   background-color: #f0f0f0;
-}
-
-.left-pane, .right-pane {
-  display: flex;
-  flex-direction: column;
-  padding: 20px;
-  box-sizing: border-box;
 }
 
 .left-pane {
   width: 30%;
   background-color: #3a3a3a;
   color: white;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  box-sizing: border-box;
 }
 
 .right-pane {
   width: 70%;
+  padding: 20px;
+  box-sizing: border-box;
   background-color: white;
 }
 

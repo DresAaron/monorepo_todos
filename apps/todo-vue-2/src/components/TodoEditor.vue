@@ -20,15 +20,17 @@
   </template>
   
   <script setup>
-  import { reactive, toRefs, watch } from 'vue';
+  import { toRefs, reactive, watchEffect } from 'vue';
   
-  const props = defineProps(['todo']);
+  const props = defineProps({
+    todo: Object,
+  });
   const emit = defineEmits(['updateTodo']);
   
   const editTodo = reactive({ ...props.todo });
   
-  watch(props.todo, (newTodo) => {
-    Object.assign(editTodo, newTodo);
+  watchEffect(() => {
+    Object.assign(editTodo, props.todo);  // Ensure 'editTodo' gets updated when 'props.todo' changes
   });
   
   const updateTodo = () => {
@@ -73,3 +75,4 @@
     background-color: #555;
   }
   </style>
+  
