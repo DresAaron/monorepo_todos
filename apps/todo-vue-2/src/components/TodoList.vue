@@ -31,6 +31,7 @@
     background: #555;
     border-radius: 5px;
     cursor: pointer;
+    transition: background 0.3s;
   }
   
   .todo-item:hover {

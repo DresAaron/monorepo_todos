@@ -22,6 +22,7 @@ const todos = ref([
   { id: 1, title: 'Sample Todo 1', description: 'Description 1', dueDate: '2023-10-01' },
   { id: 2, title: 'Sample Todo 2', description: 'Description 2', dueDate: '2023-10-02' },
 ]);
+
 const selectedTodo = ref(null);
 
 const selectTodo = (todo) => {
@@ -49,13 +50,14 @@ const updateTodo = (updatedTodo) => {
   color: white;
   display: flex;
   flex-direction: column;
-  align-items: center;
   padding: 20px;
+  box-sizing: border-box;
 }
 
 .right-pane {
   width: 70%;
   padding: 20px;
+  box-sizing: border-box;
   background-color: white;
 }
 
