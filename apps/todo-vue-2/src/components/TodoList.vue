@@ -28,24 +28,28 @@ const selectTodo = (todo) => {
 }
 
 .todo-item {
-  padding: 10px;
-  margin: 5px 0;
-  background: #555;
-  border-radius: 5px;
+  padding: 15px;
+  margin: 10px 0;
+  background: #34495e; /* Slightly lighter blue */
+  border-radius: 8px;
   cursor: pointer;
   transition: background 0.3s;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
 }
 
 .todo-item:hover {
-  background: #666;
+  background: #1abc9c; /* Hover effect with accent color */
 }
 
 .selected {
-  background: #888;
+  background: #16a085; /* Highlight selected todo */
 }
 
 .todo-title {
   font-weight: bold;
+  font-size: 1.1rem;
 }
 
 .todo-description {

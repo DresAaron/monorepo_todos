@@ -2,10 +2,12 @@
   <div class="todo-editor">
     <div class="editor-header">
       <h2>{{ isNew ? "Add Todo" : "Edit Todo" }}</h2>
-      <button class="close-button" @click="closeEditor">Close</button>
-      <button class="delete-button" v-if="!isNew" @click="deleteTodo">
-        Delete
-      </button>
+      <div>
+        <button class="delete-button" v-if="!isNew" @click="deleteTodo">
+          Delete
+        </button>
+        <button class="close-button" @click="closeEditor">Close</button>
+      </div>
     </div>
     <form @submit.prevent="updateTodo">
       <div class="form-group">
@@ -58,6 +60,10 @@ const deleteTodo = () => {
 .todo-editor {
   max-width: 600px;
   margin: auto;
+  border: 1px solid #dcdcdc; /* Light grey border */
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .editor-header {
@@ -74,6 +80,7 @@ const deleteTodo = () => {
 label {
   display: block;
   margin-bottom: 5px;
+  font-weight: bold;
 }
 
 input,

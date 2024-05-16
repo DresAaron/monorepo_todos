@@ -25,8 +25,8 @@ import TodoList from './components/TodoList.vue';
 import TodoEditor from './components/TodoEditor.vue';
 
 const todos = ref([
-  { id: 1, title: 'Sample Todo 1', description: 'Description 1', dueDate: '2023-10-01' },
-  { id: 2, title: 'Sample Todo 2', description: 'Description 2', dueDate: '2023-10-02' },
+  { id: 1, title: 'Shopping', description: 'We have to buy some big things: one Tesla model X, five Tesla model S and a cat.', dueDate: '2023-10-01' },
+  { id: 2, title: 'Setup a new project tomorrow', description: 'We need to setup a new project to explore more possibilities of the MonoRepos.', dueDate: '2023-10-02' },
 ]);
 
 const selectedTodo = ref(null);
@@ -84,13 +84,13 @@ body, html, #app {
   display: flex;
   width: 100vw;
   height: 100vh;
-  background-color: #f0f0f0;
+  background-color: #f5f5f5; /* Light grey background */
 }
 
 .left-pane {
   width: 30%;
   max-width: 400px; /* Set a max width for larger screens */
-  background-color: #3a3a3a;
+  background-color: #2c3e50; /* Dark blue background */
   color: white;
   display: flex;
   flex-direction: column;
@@ -100,9 +100,10 @@ body, html, #app {
 
 .right-pane {
   flex: 1; /* Use flex to fill the remaining space */
-  padding: 20px;
+  padding: 40px;
   box-sizing: border-box;
   background-color: white;
+  border-left: 1px solid #dcdcdc; /* Light grey border */
 }
 
 .logo {
