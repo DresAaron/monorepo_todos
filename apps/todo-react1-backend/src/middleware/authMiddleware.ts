@@ -1,13 +1,10 @@
 import { Request, Response, NextFunction } from "express";
 import jwt from "jsonwebtoken";
 import UserModel from "../models/user";
-
-interface AuthRequest extends Request {
-  user?: any;
-}
+import { AuthedRequest } from "src/typings/express";
 
 const authMiddleware = async (
-  req: AuthRequest,
+  req: AuthedRequest,
   res: Response,
   next: NextFunction
 ) => {

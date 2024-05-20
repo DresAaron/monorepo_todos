@@ -1,8 +1,9 @@
 import { Request, Response } from "express";
 import TaskModel from "../models/task";
+import { AuthedRequest } from "@/typings/express";
 
 class TaskController {
-  static createTask = async (req: Request, res: Response) => {
+  static createTask = async (req: AuthedRequest, res: Response) => {
     const { user_id, title, description, priority, due_date } = req.body;
 
     try {
@@ -22,7 +23,7 @@ class TaskController {
     }
   };
 
-  static getTasks = async (req: Request, res: Response) => {
+  static getTasks = async (req: AuthedRequest, res: Response) => {
     try {
       const tasks = await TaskModel.find({ user_id: req.user.userId });
       res.json(tasks);
@@ -31,7 +32,7 @@ class TaskController {
     }
   };
 
-  static updateTask = async (req: Request, res: Response) => {
+  static updateTask = async (req: AuthedRequest, res: Response) => {
     const { taskId } = req.params;
     const updates = req.body;
 
@@ -49,7 +50,7 @@ class TaskController {
     }
   };
 
-  static deleteTask = async (req: Request, res: Response) => {
+  static deleteTask = async (req: AuthedRequest, res: Response) => {
     const { taskId } = req.params;
 
     try {
