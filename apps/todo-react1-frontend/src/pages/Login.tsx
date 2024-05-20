@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import APIClient from '../services/APIClient';
+import APIClient from '../services/APIClient.ts';
 
 const Login: React.FC = () => {
     const [email, setEmail] = useState<string>('');
@@ -8,7 +8,7 @@ const Login: React.FC = () => {
     const handleLogin = async (e: React.FormEvent) => {
         e.preventDefault();
         const credentials = { email, password };
-        await APIClient.post('/login', credentials);
+        await APIClient.post('/users/login', credentials);
     };
 
     return (

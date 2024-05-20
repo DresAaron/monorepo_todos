@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import APIClient from '../services/APIClient';
+import APIClient from '../services/APIClient.ts';
 import TaskItem from './TaskItem';
 
 interface Task {

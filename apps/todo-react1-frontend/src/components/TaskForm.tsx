@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import APIClient from '../services/APIClient';
+import APIClient from '../services/APIClient.ts';
 
 const TaskForm: React.FC = () => {
     const [title, setTitle] = useState<string>('');
